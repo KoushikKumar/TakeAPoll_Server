@@ -1,6 +1,7 @@
 const passportService = require("./services/passport");
 const passport = require("passport");
 const TakeAPollController = require("./controllers/take_a_poll_controller");
+const IpAddressController = require("./controllers/ip_address_controller");
 const twitterAPI = require('node-twitter-api');
 
 
@@ -71,9 +72,13 @@ module.exports = function(app) {
         res.json({is_authorized:true});
     });
     
+    app.get('/get-ip-address', IpAddressController.getIpAddress);
+    
     app.post('/create',TakeAPollController.create);
     
     app.get('/getall', TakeAPollController.getAll);
     
     app.delete('/delete/:id', TakeAPollController.deleteById);
+    
+    app.post('/updatepoll', TakeAPollController.updatePoll);
 };
