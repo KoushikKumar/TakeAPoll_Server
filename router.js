@@ -1,6 +1,6 @@
 const passportService = require("./services/passport");
 const passport = require("passport");
-
+const TakeAPollController = require("./controllers/take_a_poll_controller");
 const twitterAPI = require('node-twitter-api');
 
 
@@ -70,4 +70,6 @@ module.exports = function(app) {
     app.post('/test-authorization', passport.authenticate('twitter-token',{session:false}), function (req, res) {
         res.json({is_authorized:true});
     });
+    
+    app.post('/create',TakeAPollController.create);
 };
