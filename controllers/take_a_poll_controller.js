@@ -10,4 +10,22 @@ exports.create = function(req,res,next){
         }
         res.json({"status":"OK"});
     });
+};
+
+exports.getAll = function(req,res,next) {
+    Poll.find({}, function(err, polls) {
+        if(err){
+            return next(err);
+        }
+        res.json(polls);
+    });
+};
+
+exports.deleteById = function(req,res,next) {
+    Poll.findOneAndRemove({_id:req.params.id}, function(err){
+            if(err){
+                return next(err);
+            }
+            res.json({"status":"OK"});
+    })
 }

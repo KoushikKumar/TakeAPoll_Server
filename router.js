@@ -72,4 +72,8 @@ module.exports = function(app) {
     });
     
     app.post('/create',TakeAPollController.create);
+    
+    app.get('/getall', TakeAPollController.getAll);
+    
+    app.delete('/delete/:id', TakeAPollController.deleteById);
 };
