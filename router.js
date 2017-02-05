@@ -83,4 +83,6 @@ module.exports = function(app) {
     app.post('/updatepoll', TakeAPollController.updatePoll);
     
     app.get('/getall/user/:userId', TakeAPollController.getAllPollsByUser);
+    
+    app.get('/get/poll/:id', TakeAPollController.getPollById);
 };

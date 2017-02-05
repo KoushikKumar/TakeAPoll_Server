@@ -48,3 +48,12 @@ exports.getAllPollsByUser = function(req, res, next) {
         res.json(polls);
     });
 };
+
+exports.getPollById = function(req, res, next) {
+    Poll.findOne({_id:req.params.id},function(err, poll) {
+        if(err) {
+            return next(err);
+        }
+        res.json(poll);
+    });
+};
