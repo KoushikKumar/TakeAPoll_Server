@@ -19,7 +19,7 @@ module.exports = function(app) {
     });
     
     app.get('/',function(req,res){
-       res.sendFile(process.cwd()+'/sample.html'); 
+       res.end("server started successfully"); 
     });
     
     app.get('/generate-token', function(req, res, next){
