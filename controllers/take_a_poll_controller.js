@@ -32,13 +32,19 @@ exports.deleteById = function(req,res,next) {
 
 exports.updatePoll = function(req,res,next) {
     const receivedPoll = req.body;
-    console.log("receivedPoll", receivedPoll);
     Poll.findOneAndUpdate({_id:receivedPoll._id},receivedPoll,function(err,poll){
         if(err) {
             return next(err);
         }
-        console.log(poll);
-        console.log("updated");
         res.json({"status":"OK"});
+    });
+};
+
+exports.getAllPollsByUser = function(req, res, next) {
+    Poll.find({"createdBy":req.params.userId}, function(err, polls){
+        if(err){
+            return next(err);
+        }
+        res.json(polls);
     });
 };

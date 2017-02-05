@@ -81,4 +81,6 @@ module.exports = function(app) {
     app.delete('/delete/:id', TakeAPollController.deleteById);
     
     app.post('/updatepoll', TakeAPollController.updatePoll);
+    
+    app.get('/getall/user/:userId', TakeAPollController.getAllPollsByUser);
 };
